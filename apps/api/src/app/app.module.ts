@@ -1,0 +1,20 @@
+import { ProjectsModule } from '@/projects/projects.module'
+import { ApolloDriver, type ApolloDriverConfig } from '@nestjs/apollo'
+import { Module } from '@nestjs/common'
+import { ConfigModule } from '@nestjs/config'
+import { GraphQLModule } from '@nestjs/graphql'
+import { join } from 'path'
+
+@Module({
+    imports: [
+        ConfigModule.forRoot({
+            isGlobal: true
+        }),
+        GraphQLModule.forRoot<ApolloDriverConfig>({
+            driver: ApolloDriver,
+            autoSchemaFile: join(process.cwd(), 'src/schema.gql')
+        }),
+        ProjectsModule
+    ]
+})
+export class AppModule {}
