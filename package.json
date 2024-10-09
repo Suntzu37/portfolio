@@ -12,6 +12,13 @@
         "url": "https://github.com/Suntzu37/portfolio.git"
     },
     "license": "MIT",
+    "workspaces": [
+        "apps/*"
+    ],
+    "scripts": {
+        "api": "yarn workspace @portfolio/api",
+        "web": "yarn workspace @portfolio/web"
+    },
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "^6.4.0",
         "eslint": "^8.0.1",
